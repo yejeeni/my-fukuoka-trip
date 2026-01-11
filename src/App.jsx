@@ -69,9 +69,9 @@ const App = () => {
         { id: 2, time: "09:55", name: "후쿠오카 공항 도착", desc: "입국 심사 및 짐 찾기", type: "transport", pos: [33.5859, 130.4442] },
         { id: 3, time: "10:38 / 11:08", name: "유후인행 버스 탑승", desc: "공항 버스 정류장에서 유후인행 고속버스 승차", type: "transport", pos: [33.5850, 130.4430] },
         { id: 4, time: "13:00", name: "유후 마부시 신", desc: "유후인역 바로 앞, 접근성이 매우 좋은 덮밥집", type: "food", menu: "분고규/장어/닭고기 마부시: 각 3,200円 (세후)", blogKeyword: "유후인 유후마부시 신", pos: [33.262972, 131.355668], isCashOnly: true },
-        { id: 5, time: "15:00", name: "유후인 거리 산책 & 간식", desc: "긴린코 호수까지 이어지는 산책로 구경", type: "sightseeing", menu: "말차 아이스크림 600円 / 금상고로케 220円", blogKeyword: "유후인 테라토 말차 아이스크림 금상고로케", pos: [33.2647, 131.3615], isCashOnly: true },
+        { id: 5, time: "15:00", name: "유후인 거리 산책 & 간식", desc: "긴린코 호수까지 이어지는 산책로 구경", type: "sightseeing", menu: "테라토 말차 아이스크림 600円 / 금상고로케 220円", blogKeyword: "유후인 테라토 말차 아이스크림 금상고로케", pos: [33.2647, 131.3615], isCashOnly: true },
         { id: 6, time: "16:40", name: "료칸 픽업 요청 및 이동", desc: "JR 유후인역 공중전화에서 픽업 요청", type: "transport", pos: [33.2628, 131.3565] },
-        { id: 7, time: "18:00", name: "펜션 장한향 (ペンション 長閑郷)", desc: "조용한 숲속 가이세키 료칸 숙박 및 석식", type: "hotel", menu: "가이세키 석식/조식 포함", blogKeyword: "유후인 ペンション 長閑郷", pos: [33.272410, 131.352455], isCashOnly: true }
+        { id: 7, time: "18:00", name: "펜션 장한향 (ペンション 長閑郷)", desc: "조용한 숲속 가이세키 료칸 숙박 및 석식", type: "hotel", menu: "가이세키 석식/조식 포함\n입탕세 1000円(4인)", blogKeyword: "유후인 ペンション 長閑郷", pos: [33.272410, 131.352455], isCashOnly: true }
       ]
     },
     2: {
@@ -312,7 +312,7 @@ const App = () => {
           <div className="flex-1 overflow-hidden relative">
             <div className={`w-full h-full overflow-y-auto p-4 scroll-smooth custom-scrollbar transition-opacity duration-300 ${selectedLoc ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
               <div className="mb-4">
-                <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
                   <Calendar size={14} className="text-red-500" /> {currentDayData.date}
                 </h2>
                 <p className="text-[11px] text-slate-400 mt-1 font-medium tracking-tight">{currentDayData.title}</p>
@@ -331,20 +331,20 @@ const App = () => {
                     }`}
                   >
                     <div className="flex justify-between items-start mb-1">
-                      <span className={`text-[10px] font-bold flex items-center gap-1 ${highlightedId === loc.id ? 'text-red-600' : 'text-slate-400 group-hover:text-slate-600'}`}>
+                      <span className={`text-sm font-bold flex items-center gap-1 ${highlightedId === loc.id ? 'text-red-600' : 'text-slate-400 group-hover:text-slate-600'}`}>
                         {renderTypeIcon(loc.type)} {loc.time}
                       </span>
                       {loc.isCashOnly && (
-                        <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-bold rounded">
+                        <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[11px] font-bold rounded">
                           <Banknote size={10} /> 현금 전용
                         </span>
                       )}
                     </div>
-                    <h3 className={`font-bold text-sm transition-colors ${highlightedId === loc.id ? 'text-red-700' : 'text-slate-800 group-hover:text-red-500'}`}>{loc.name}</h3>
-                    <p className="text-[11px] text-slate-500 mt-1 line-clamp-1 leading-relaxed">{loc.desc}</p>
+                    <h3 className={`font-bold text-base transition-colors ${highlightedId === loc.id ? 'text-red-700' : 'text-slate-800 group-hover:text-red-500'}`}>{loc.name}</h3>
+                    <p className="text-sm text-slate-500 mt-1 line-clamp-1 leading-relaxed">{loc.desc}</p>
                     
                     {loc.menu && (
-                      <div className={`mt-2 p-2 rounded-lg text-[10px] leading-snug border-l-2 ${highlightedId === loc.id ? 'bg-white border-red-400 text-slate-700' : 'bg-slate-50 border-slate-200 text-slate-500 group-hover:bg-white transition-colors'}`}>
+                      <div className={`mt-2 p-2 rounded-lg text-sm leading-snug border-l-2 ${highlightedId === loc.id ? 'bg-white border-red-400 text-slate-700' : 'bg-slate-50 border-slate-200 text-slate-500 group-hover:bg-white transition-colors'}`}>
                         <div className="font-bold flex items-center gap-1 mb-0.5 opacity-80">
                           <Utensils size={10} /> 정보 및 비용
                         </div>
@@ -462,7 +462,7 @@ const App = () => {
                 <h3 className="text-blue-800 font-bold text-sm mb-2 flex items-center gap-1">
                   <Banknote size={14} /> 1. 현금 전용 (카드 불가 항목)
                 </h3>
-                <ul className="text-xs text-blue-900/70 space-y-1.5 font-medium">
+                <ul className="text-sm text-blue-900/70 space-y-1.5 font-medium">
                   <li className="flex justify-between border-b border-blue-200/50 pb-1">
                     <span>장어덮밥 (4인)</span>
                     <span className="font-bold text-blue-900">12,800엔</span>
@@ -481,12 +481,12 @@ const App = () => {
                   </li>
                 </ul>
                 <div className="mt-4 pt-3 border-t-2 border-dashed border-blue-200 flex justify-between items-center">
-                  <span className="text-[10px] font-bold text-blue-500">현금 합계</span>
+                  <span className="text-sm font-bold text-blue-500">현금 합계</span>
                   <span className="text-base font-black text-blue-700">15,440엔</span>
                 </div>
               </div>
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <p className="text-[11px] text-slate-500 leading-relaxed font-medium">
+                <p className="text-sm text-slate-500 leading-relaxed font-medium">
                   * 최소 비용만 계산해둔 것이므로 비상금 및 소액 현금을 더 준비하세요.
                 </p>
               </div>
